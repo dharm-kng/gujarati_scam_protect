@@ -1,0 +1,12 @@
+{
+  "name": "cybersaathi-gujarati",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gujarati cyber-fraud awareness website with optional protected AI analysis",
+  "scripts": {
+    "dev": "npx vercel dev"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
