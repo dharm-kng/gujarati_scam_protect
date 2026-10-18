@@ -1,65 +1,64 @@
-# સુરક્ષા સાથી (Suraksha Saathi) — PS000196
+# સુરક્ષા સાથી (CyberSaathi Gujarati) — PS000196
 
-Gujarati AI Assistant for Cyber-Fraud Awareness. This beginner-friendly static website checks suspicious messages locally using a rule-based JavaScript engine. It includes a checker, scam learning library, quiz, risk score, link heuristics, speech playback, copy/share controls and a privacy-first offline design.
+A beginner-friendly Gujarati cyber-fraud awareness website. People can paste suspicious SMS, WhatsApp, job, KYC, or payment messages and receive a simple explanation, warning signs, a risk estimate, and safer next steps.
 
-## Run locally
-1. Extract the ZIP.
-2. Open `suraksha-saathi/index.html` in Chrome, Edge, Firefox or another modern browser.
-3. Paste a sample message or click one of the demo buttons, then choose **મેસેજ તપાસો**.
-4. `learn.html` contains the scam library; `quiz.html` contains the quiz.
+## What works now
 
-No Node.js, package installation, build step, API key or server is required. The Google Font needs internet; system fonts are used as fallback. Browser clipboard and speech features may require permission and browser support.
+- Responsive Gujarati-first website with sample messages and a live character counter.
+- Rule-based analysis runs in the browser without a server or API key.
+- Risk score, warning indicators, safe next steps, copy-report action, and privacy/safety reminder.
+- Optional AI analysis through a protected serverless endpoint. The API key stays on the server and is never sent to browser JavaScript.
+- Automatic local-analysis fallback when AI is not configured or the API is unavailable.
 
-## Files
-- `index.html` — message scanner and results
-- `learn.html` — searchable 30-category safety library
-- `quiz.html` — 10-question quiz
-- `css/style.css` — responsive, accessible visual design
-- `js/scamData.js` — data-driven category catalogue
-- `js/scamEngine.js` — offline risk rules and URL checks
-- `js/app.js` — UI, language labels, result rendering and actions
-- `js/quiz.js` — quiz logic
-- `js/aiExplain.js` — optional protected-backend extension point
-- `tests/test-checklist.md` — manual test checklist
+## Run the offline demo
 
-## Add a scam category
-Open `js/scamData.js`. Add an object to `window.SCAM_CATEGORIES` with a unique `id`, `nameGu`, `nameEn`, `weight`, `keywords`, `explainGu`, `signsGu`, `doGu`, and `dontGu`. Keep keyword phrases short and include common Gujarati, Hindi, English and transliterated variants. Test both scam messages and legitimate messages that contain similar words. The current interface uses general safe-step templates for result lists; category-specific steps can be wired into `js/app.js` as a future enhancement.
+1. Download the repository ZIP or clone the repository.
+2. Open `index.html` in a modern browser.
+3. Paste a message or select one of the example buttons and press **મેસેજ તપાસો**.
 
-## Optional AI mode
-AI mode is **disabled by default**. Never place a private LLM API key in JavaScript delivered to the public browser. To enable an AI explanation safely:
-1. Build a small backend/serverless function that stores the API key in environment variables.
-2. Make that backend validate input size, rate-limit requests and avoid logging sensitive messages.
-3. Set `window.AI_EXPLAIN_CONFIG.enabled = true` and `endpoint` to your protected backend endpoint in `js/aiExplain.js`.
-4. Integrate the returned explanation into the UI and test failures. The app must retain the offline rule-based result if AI is unavailable.
-The included extension point does not call an LLM until configured and does not contain a working provider API integration.
+The offline checker does not require Node.js, an API key, or a backend. When opened directly as a file, AI mode is not called.
 
-## Free hosting
-### GitHub Pages
-1. Create a GitHub repository and upload the contents of this folder (so `index.html` is at the repository root).
-2. Open **Settings → Pages**.
-3. Select the main branch and root folder, then save.
-4. Wait for the deployment link shown by GitHub Pages.
-### Netlify
-1. Sign in to Netlify and choose **Add new site → Deploy manually**.
-2. Drag the extracted project folder into the deployment area, or connect the Git repository.
-3. Use the provided Netlify URL; connect a custom domain from site settings if desired.
+## Enable AI analysis locally
 
-## Safety and limitations
-- This is a cyber-awareness aid, not a security scanner, bank verification tool or law-enforcement service.
-- The score is heuristic. Scammers change wording, and legitimate messages can contain suspicious terms. Never rely only on the score.
-- URL checks are based on visible text and simple patterns; they do not visit links, verify ownership, or guarantee a site is malicious/safe.
-- The app does not send messages to a server. Do not add a backend without a clear privacy notice.
-- If money is lost, call India's cyber-fraud helpline **1930** promptly and report at https://cybercrime.gov.in/. Also notify your bank through an official channel.
+Requirements: Node.js 20 or newer and a private OpenAI API key.
 
-## 1-minute demo script
-“Hello judges, this is Suraksha Saathi, our Gujarati cyber-fraud awareness assistant for problem statement PS000196. Many people receive scam messages but struggle to understand the warning signs. Our website lets users paste a suspicious SMS or WhatsApp message and get a simple risk score, possible scam categories, suspicious-link notes and safe next steps. The core detection runs offline in the browser, so the message is not sent to a server. Users can learn about common scams, take a quiz, listen to the result and share a warning with family. This is an awareness tool, not a guarantee, and we direct people who lose money to call 1930 and report at cybercrime.gov.in. Our next steps are Gujarati voice input, a verified scam-number database, a browser extension, an SMS safety app and a WhatsApp bot.”
+1. Copy `.env.example` to `.env` and put your key in `.env`. Never commit the real `.env` file.
+2. Install Vercel CLI if needed, then run `npx vercel dev` from the repository root.
+3. Add `OPENAI_API_KEY` and optionally `OPENAI_MODEL` to the local environment used by Vercel.
+4. Open the local URL printed by Vercel and test a sample message.
 
-## Future improvements
-1. Gujarati speech-to-text input.
-2. WhatsApp bot with clear privacy protections.
-3. Browser extension that warns before opening suspicious links.
-4. SMS auto-scan companion app with explicit permissions.
-5. Community-reported scam numbers with moderation and official verification.
+The server endpoint is `POST /api/analyze`. It accepts JSON such as `{"message":"..."}` and returns `{"report":{"score":0,"level":"low","summary":"...","signals":[],"steps":[],"source":"ai"}}`.
 
-## Screenshots
-Add screenshots of the checker, result card, learning library and quiz here after running the project.
+## Deploy to Vercel
+
+1. Push this repository/branch to GitHub.
+2. Sign in to Vercel and import `dharm-kng/gujarati_scam_protect`.
+3. In **Project Settings → Environment Variables**, add:
+   - `OPENAI_API_KEY` — your secret API key
+   - `OPENAI_MODEL` — optional; defaults to `gpt-4o-mini`
+4. Deploy the branch `prototype/ai-backend` to preview it, or merge it into `main` when you're ready.
+5. Open the deployment URL and test both a scam-like sample and an ordinary message.
+
+The static website can also be hosted on GitHub Pages, but the AI endpoint requires a serverless host such as Vercel. GitHub Pages alone cannot securely store a private API key or run this API route. A custom domain is optional and can be connected in the hosting provider's domain settings.
+
+## Privacy and safety
+
+- The offline checker processes text in the browser.
+- When AI mode is enabled, the submitted message is sent to the configured AI provider through the serverless endpoint to generate a report. Do not paste OTPs, passwords, UPI PINs, full card numbers, or other sensitive details.
+- The endpoint does not intentionally log the message body. Hosting providers and AI providers may process technical request data under their own policies.
+- A small in-memory rate limit is included as a best-effort guard; configure stronger rate limiting at the hosting/WAF layer before high-traffic public launch.
+- The score is an estimate, not proof that a message is safe or fraudulent. URL checks do not verify the real ownership or safety of a website.
+- Never share an OTP, password, or UPI PIN or pay a fee to receive a supposed refund/prize.
+- If money has been lost to cyber fraud in India, call **1930** promptly and report at https://cybercrime.gov.in/. Contact the bank using an official channel too.
+
+## Project structure
+
+- `index.html` — complete responsive frontend and offline rules engine
+- `api/analyze.js` — protected AI serverless endpoint
+- `package.json` — Node project metadata and local development command
+- `vercel.json` — serverless endpoint configuration
+- `.env.example` — names of server-side environment variables (no secrets)
+
+## Demo presentation
+
+“Hello judges, this is CyberSaathi Gujarati for problem statement PS000196. People often receive suspicious messages but may not understand the warning signs. Our website provides a Gujarati risk estimate, explains suspicious patterns, and suggests safer next steps. The basic checker runs locally in the browser. When a private server-side key is configured, the optional AI endpoint can provide a more natural explanation. This is an awareness aid, not a guarantee. Anyone who loses money should contact 1930 and report at cybercrime.gov.in.”
