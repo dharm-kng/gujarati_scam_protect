@@ -27,10 +27,7 @@ function allowRequest(ip) {
 }
 
 function parseModelJson(content) {
-  const cleaned = String(content || "").trim()
-    .replace(/^\\\`\\\`\\\`(?:json)?\\s*/i, "")
-    .replace(/\\s*\\\`\\\`\\\`$/, "");
-  return JSON.parse(cleaned);
+  return JSON.parse(String(content || "").trim());
 }
 
 export default async function handler(req, res) {
