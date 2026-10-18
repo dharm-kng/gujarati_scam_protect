@@ -15,7 +15,8 @@
 <main class="wrap">
 <section class="hero"><div><div class="eyebrow"><span class="dot"></span> સરળ ગુજરાતી · મફત પ્રાથમિક તપાસ</div><h1>શંકાસ્પદ મેસેજ?<br><span>પહેલાં તપાસો.</span></h1><p>SMS, WhatsApp અથવા પેમેન્ટ મેસેજ અહીં પેસ્ટ કરો. સંભવિત છેતરપિંડીના સંકેતો સમજો અને આગળ શું સુરક્ષિત પગલાં લેવા તે ગુજરાતીમાં જાણો.</p></div><aside class="hero-visual"><div class="shield">✓</div><h3>વિચાર કરો. ચકાસો. પછી જ ક્લિક કરો.</h3><p>તમારી ડિજિટલ સુરક્ષા માટે બનાવેલું સરળ ગુજરાતી સહાયક.</p><div class="mini-pills"><span>↗ લિંકની ચેતવણી</span><span>₹ પેમેન્ટ જોખમ</span><span>♧ સુરક્ષિત પગલાં</span></div></aside></section>
 <div class="section-label">તમારો મેસેજ તપાસો</div>
-<section class="workspace"><div class="panel"><div class="panel-head"><div><h2>મેસેજ અહીં પેસ્ટ કરો</h2><p class="sub">OTP, પાસવર્ડ અથવા બેંકની ખાનગી વિગતો નાખશો નહીં.</p></div><span class="count" id="count">0 / 2000</span></div><textarea id="message" maxlength="2000" aria-label="શંકાસ્પદ મેસેજ" placeholder="ઉદાહરણ: તમારું બેંક એકાઉન્ટ બંધ થઈ જશે. તરત KYC અપડેટ કરવા આ લિંક પર ક્લિક કરો..."></textarea><div class="examples"><button class="example" data-example="bank">🏦 બેંક KYC</button><button class="example" data-example="upi">💸 UPI રિફંડ</button><button class="example" data-example="job">💼 નોકરીની ઓફર</button><button class="example" data-example="safe">✓ સામાન્ય મેસેજ</button></div><div class="actions"><button class="primary" id="analyze">મેસેજ તપાસો <span>→</span></button><button class="secondary" id="clear">સાફ કરો</button></div><div class="privacy"><span>🔒</span><div><b>ગોપનીયતા:</b> આ ડેમો તમારા મેસેજને ઇતિહાસમાં સાચવતો નથી. AI API સેટ હોય તો વિશ્લેષણ માટે મેસેજ સર્વર પર મોકલાય છે.</div></div></div>
+<section class="workspace"><div class="panel"><div class="panel-head"><div><h2>મેસેજ અહીં પેસ્ટ કરો</h2><p class="sub">OTP, પાસવર્ડ અથવા બેંકની ખાનગી વિગતો નાખશો નહીં.</p></div><span class="count" id="count">0 / 2000</span></div><textarea id="message" maxlength="2000" aria-label="શંકાસ્પદ મેસેજ" placeholder="ઉદાહરણ: તમારું બેંક એકાઉન્ટ બંધ થઈ જશે. તરત KYC અપડેટ કરવા આ લિંક પર ક્લિક કરો..."></textarea><div class="examples"><button class="example" data-example="bank">🏦 બેંક KYC</button><button class="example" data-example="upi">💸 UPI રિફંડ</button><button class="example" data-example="job">💼 નોકરીની ઓફર</button><button class="example" data-example="safe">✓ સામાન્ય મેસેજ</button></div><div class="actions"><button class="primary" id="analyze">મેસેજ તપાસો <span>→</span></button><button class="secondary" id="clear">સાફ કરો</button></div><div class="privacy"><span>🔒</span><div><b>ગોપનીયતા:</b> આ ડેમો તમારા મેસેજને ઇતિહાસમાં સાચવતો નથી. AI API સેટ હોય તો વિશ્લેષણ માટે મેસેજ સર્વર પર મોકલાય છે.</div></div>
+<div class="privacy" id="aiStatus" role="status"><span>🤖</span><div>AI API ની સ્થિતિ તપાસી રહ્યા છીએ...</div></div></div>
 <div class="panel result-panel"><div class="panel-head"><div><h2>તમારી તપાસનો અહેવાલ</h2><p class="sub">જોખમના સંકેતો અને આગળનાં પગલાં</p></div></div><div class="empty-state" id="empty"><div class="empty-icon">🛡️</div><h3>અહીં તમારો રિપોર્ટ દેખાશે</h3><p>ડાબી બાજુ મેસેજ પેસ્ટ કરીને “મેસેજ તપાસો” દબાવો અથવા ઉપરના નમૂનાઓ અજમાવો.</p></div><div class="result" id="result" aria-live="polite"><div class="risk-row"><div><span class="risk-badge medium" id="badge">● મધ્યમ જોખમ</span><p class="sub" id="riskLabel" style="margin-top:9px">સાવચેતી રાખો</p></div><div class="risk-score"><strong id="score">45</strong><small>જોખમ સ્કોર / 100</small></div></div><div class="meter"><span id="meter"></span></div><h3>સરળ ભાષામાં અર્થ</h3><p class="result-copy" id="summary"></p><h3>⚠️ ચેતવણીના સંકેતો</h3><ul class="signal-list" id="signals"></ul><h3>✓ હવે શું કરવું?</h3><ul class="steps" id="steps"></ul><div class="result-footer" id="disclaimer">આ પ્રાથમિક તપાસ છે, ખાતરીપૂર્વકનો નિર્ણય નથી. શંકા હોય તો સત્તાવાર ચેનલથી ચકાસો.</div><div class="result-buttons"><button class="secondary" id="copyReport">રિપોર્ટ કૉપી કરો</button><button class="secondary" id="again">બીજો મેસેજ તપાસો</button></div></div></div></section>
 <section class="stats"><div class="stat"><strong>🚫 OTP ક્યારેય નહીં</strong><span>બેંક કે વિશ્વસનીય સંસ્થા પણ તમારો OTP, PIN અથવા પાસવર્ડ માંગતી નથી.</span></div><div class="stat"><strong>🔗 લિંક ચકાસો</strong><span>અજાણી લિંકને બદલે એપ અથવા વેબસાઇટ જાતે ખોલીને તપાસો.</span></div><div class="stat"><strong>📞 દબાણમાં નિર્ણય નહીં</strong><span>“હમણાં જ કરો” કે “એકાઉન્ટ બંધ થશે” જેવી ધમકીથી સાવધાન રહો.</span></div></section>
 </main><footer class="wrap bottom"><div><strong>CyberSaathi Gujarati</strong><br>જાગૃતિ જ ડિજિટલ સુરક્ષાનું પહેલું પગલું છે.</div><div>ભારતમાં સાયબર છેતરપિંડીની જાણ માટે <strong>1930</strong> અથવા <strong>cybercrime.gov.in</strong> નો ઉપયોગ કરો.</div></footer><div class="toast" id="toast"></div>
@@ -28,6 +29,22 @@ job:"ઘરે બેઠા દરરોજ ₹5,000 કમાઓ! કોઈ અ
 safe:"નમસ્તે, કાલે બપોરે 3 વાગ્યે કોલેજમાં પ્રોજેક્ટ મીટિંગ છે. કૃપા કરીને તમારો પ્રોજેક્ટ રિપોર્ટ સાથે લાવશો."
 };
 let lastReport=null;
+async function checkAIStatus(){
+ const status=$('aiStatus');
+ try{
+  const response=await fetch('/api/analyze',{method:'GET',headers:{'Accept':'application/json'},cache:'no-store'});
+  const data=await response.json();
+  if(response.ok && data.available){
+   status.innerHTML='<span>🤖</span><div><b>AI API તૈયાર છે:</b> live AI વિશ્લેષણ ઉપલબ્ધ છે.</div>';
+  }else{
+   status.innerHTML='<span>🧪</span><div><b>ડેમો મોડ:</b> AI API key હજી હોસ્ટિંગ સેટિંગ્સમાં ઉમેરવાની છે.</div>';
+  }
+ }catch(e){
+  status.innerHTML='<span>🧪</span><div><b>ડેમો મોડ:</b> હોસ્ટેડ API મળ્યો નથી; સ્થાનિક નિયમ-આધારિત તપાસ ઉપલબ્ધ છે.</div>';
+ }
+}
+if(location.protocol!=='file:') checkAIStatus();
+else $('aiStatus').innerHTML='<span>🧪</span><div><b>ડેમો મોડ:</b> AI માટે આ વેબસાઇટને API સાથે હોસ્ટ કરો.</div>';
 $('message').addEventListener('input',()=> $('count').textContent=$('message').value.length+' / 2000');
 document.querySelectorAll('[data-example]').forEach(b=>b.addEventListener('click',()=>{$('message').value=examples[b.dataset.example];$('count').textContent=$('message').value.length+' / 2000';$('message').focus()}));
 $('clear').addEventListener('click',()=>{$('message').value='';$('count').textContent='0 / 2000';$('result').style.display='none';$('empty').style.display='flex';$('message').focus()});
