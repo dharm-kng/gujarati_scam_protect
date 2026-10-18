@@ -31,9 +31,15 @@ function parseModelJson(content) {
 }
 
 export default async function handler(req, res) {
+  if (req.method === "GET") {
+    return send(res, 200, {
+      available: Boolean(process.env.OPENAI_API_KEY),
+      model: process.env.OPENAI_MODEL || "gpt-4o-mini"
+    });
+  }
   if (req.method !== "POST") {
-    res.setHeader("Allow", "POST");
-    return send(res, 405, { error: "POST method required." });
+    res.setHeader("Allow", "GET, POST");
+    return send(res, 405, { error: "GET or POST method required." });
   }
 
   const ip = String(req.headers["x-forwarded-for"] || "unknown").split(",")[0].trim();
